@@ -1,0 +1,138 @@
+/* SPOTLIGHT — The Curator's Case: the museum frame.
+   Deep green + brass + warm paper. Everything the game shows is drawn
+   or styled here; no external fonts, no images, no network. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: #12211c;
+  color: #f4ead6;
+  font-family: Georgia, 'Times New Roman', serif;
+  overflow-x: hidden;
+}
+button { font-family: inherit; cursor: pointer; }
+.hidden { display: none !important; }
+
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 22px; background: #0c1714;
+  border-bottom: 2px solid #c9a227;
+}
+.brand { font-size: 20px; font-weight: 700; letter-spacing: 2px; color: #f0c94a; }
+.brand-sub { font-size: 13px; font-weight: 400; letter-spacing: 1px; color: #d9cbae; margin-left: 6px; }
+.top-actions { display: flex; gap: 12px; align-items: center; }
+.stars { font-size: 18px; color: #f0c94a; }
+
+.btn {
+  background: #1e5f52; color: #f4ead6; border: 1px solid #c9a227;
+  border-radius: 6px; padding: 8px 16px; font-size: 15px;
+}
+.btn:hover { background: #276f60; }
+.btn:disabled { opacity: 0.45; cursor: default; }
+.btn.small { padding: 5px 12px; font-size: 13px; }
+.btn.big { padding: 12px 26px; font-size: 18px; background: #c9a227; color: #1c2420; font-weight: 700; }
+.btn.big:hover { background: #f0c94a; }
+
+.screen { max-width: 1240px; margin: 0 auto; padding: 18px 20px 30px; }
+.menu-hero { text-align: center; margin-bottom: 18px; }
+.menu-hero h1 { font-size: 54px; letter-spacing: 10px; color: #f0c94a; }
+.tagline { max-width: 720px; margin: 8px auto; font-size: 16px; line-height: 1.5; color: #d9cbae; }
+.total-diffs { font-size: 15px; color: #f0c94a; margin: 8px 0 14px; }
+
+.judge-card {
+  background: #f4ead6; color: #1c2420; border-radius: 10px;
+  padding: 16px 22px; max-width: 860px; margin: 0 auto 22px;
+  border: 2px solid #c9a227;
+}
+.judge-card h2 { font-size: 20px; margin-bottom: 6px; color: #143f37; }
+.judge-card p { font-size: 14px; line-height: 1.5; margin-bottom: 8px; }
+.judge-card ul { margin: 0 0 8px 20px; font-size: 14px; line-height: 1.55; }
+.judge-note { font-style: italic; color: #5a4632; }
+
+.section-title { text-align: center; font-size: 22px; margin-bottom: 12px; color: #f0c94a; }
+.scene-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+}
+.scene-card {
+  background: #1e5f52; border: 1px solid #c9a227; border-radius: 8px;
+  color: #f4ead6; padding: 14px 12px; text-align: left;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.scene-card:hover { background: #276f60; transform: translateY(-1px); }
+.scene-title { font-size: 16px; font-weight: 700; }
+.scene-sub { font-size: 12px; color: #d9cbae; }
+.scene-stars { font-size: 16px; color: #f0c94a; }
+.scene-best { font-size: 12px; color: #b8c4c9; }
+.keys { text-align: center; margin-top: 16px; font-size: 13px; color: #b8c4c9; }
+
+/* ---- play screen ---- */
+.hud {
+  display: flex; justify-content: space-between; align-items: center; gap: 14px;
+  background: #0c1714; border: 1px solid #c9a227; border-radius: 8px;
+  padding: 8px 14px; margin-bottom: 12px;
+}
+.hud-left, .hud-mid, .hud-right { display: flex; align-items: center; gap: 12px; }
+.scene-name { font-size: 19px; font-weight: 700; color: #f0c94a; }
+.remain {
+  background: #b5523a; color: #fff; font-size: 14px; font-weight: 700;
+  padding: 4px 10px; border-radius: 20px; letter-spacing: 1px;
+}
+.remain.done { background: #2f7a4d; }
+.timer-wrap {
+  width: 220px; height: 14px; background: #1c2420; border-radius: 8px;
+  overflow: hidden; border: 1px solid #5a4632;
+}
+.timer-wrap.urgent { animation: pulse 1s infinite; }
+@keyframes pulse { 50% { border-color: #ff5d4d; } }
+.timer-bar { height: 100%; background: #7ddb6a; transition: width 0.3s linear; }
+.timer-text { font-size: 19px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.combo { font-size: 15px; font-weight: 700; color: #59d8ff; min-width: 84px; text-align: right; }
+.combo.hot { color: #f0c94a; }
+.score-label, .counter-label { font-size: 14px; color: #d9cbae; letter-spacing: 1px; }
+.score-label span, .counter-label span { font-size: 20px; font-weight: 700; color: #f4ead6; }
+
+.panels { display: flex; gap: 16px; justify-content: center; align-items: stretch; }
+.panel { text-align: center; }
+.panel canvas {
+  width: 560px; height: 400px; display: block;
+  border: 3px solid #c9a227; border-radius: 8px; cursor: crosshair;
+  background: #f4ead6;
+}
+.panel figcaption { margin-top: 6px; font-size: 13px; letter-spacing: 2px; color: #d9cbae; }
+.vs {
+  align-self: center; font-size: 22px; font-weight: 700; color: #f0c94a;
+  width: 34px; height: 34px; line-height: 34px; text-align: center;
+  border: 2px solid #c9a227; border-radius: 50%; flex: none;
+}
+.play-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 12px;
+}
+.dots { display: flex; gap: 8px; }
+.dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #1c2420; border: 2px solid #c9a227;
+}
+.dot.found { background: #ffb400; border-color: #ffd94d; }
+.play-actions { display: flex; gap: 10px; }
+.toast {
+  position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%) translateY(20px);
+  background: #f4ead6; color: #1c2420; padding: 10px 20px; border-radius: 24px;
+  font-size: 15px; opacity: 0; pointer-events: none; transition: all 0.25s;
+  border: 2px solid #c9a227; max-width: 80vw; text-align: center;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ---- overlays ---- */
+.screen.overlay {
+  position: fixed; inset: 0; max-width: none; background: rgba(12, 23, 20, 0.88);
+  display: flex; align-items: center; justify-content: center; z-index: 10;
+}
+.card {
+  background: #f4ead6; color: #1c2420; border-radius: 12px; padding: 32px 44px;
+  text-align: center; border: 3px solid #c9a227; max-width: 560px;
+}
+.card h2 { font-size: 28px; margin-bottom: 10px; color: #143f37; }
+.big-stars { font-size: 44px; color: #c9a227; letter-spacing: 6px; margin: 6px 0; }
+.big-score { font-size: 26px; font-weight: 700; margin: 6px 0; }
+.stats { font-size: 15px; line-height: 1.6; color: #5a4632; margin-bottom: 18px; }
+.card-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
